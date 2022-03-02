@@ -18,6 +18,11 @@
                 {{ $errors->has('title') ? $errors->first('title') : '' }}
             </div>
             <div class="form-group">
+                <label for="date">Event date:</label>
+                <input type="date" name="date" id="date" class="form-control" placeholder="Event date...">
+                {{ $errors->has('date') ? $errors->first('date') : '' }}
+            </div>
+            <div class="form-group">
                 <label for="city">City:</label>
                 <input type="text" name="city" id="city" class="form-control" placeholder="City name...">
                 {{ $errors->has('city') ? $errors->first('city') : '' }}

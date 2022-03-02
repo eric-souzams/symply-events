@@ -10,8 +10,14 @@ class EventController extends Controller
 {
     public function index()
     {
-        $events = Event::all();
-        return view('events.index', ['events' => $events]);
+        $search = request('search');
+        if ($search) {
+            $events = Event::where('title', 'like', '%'.$search.'%')->get();
+        } else {
+            $events = Event::all();
+        }
+
+        return view('events.index', ['events' => $events, 'search' => $search]);
     }
 
     public function create()
@@ -23,6 +29,7 @@ class EventController extends Controller
     {
         $request->validate([
             'title' => 'required|string|min:1|max:100',
+            'date' => 'required|date',
             'city' => 'required|string|min:1|max:100',
             'private' => 'required|boolean',
             'description' => 'required|string|min:1',
@@ -39,6 +46,7 @@ class EventController extends Controller
 
         Event::create([
             'title' => $request->title,
+            'date' => $request->date,
             'city' => $request->city,
             'private' => $request->private,
             'description' => $request->description,

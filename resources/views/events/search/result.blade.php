@@ -1,22 +1,18 @@
 @extends('layouts.main')
 
-@section('title', 'Events')
+@section('title', 'Search Result')
 
 @section('content')
     <div id="search-container" class="col-md-12" style="background-color: #233240;">
         <h1>Busque por um evento</h1>
-        <form action="{{ route('events.index') }}" method="get">
+        <form action="{{ route('events.search') }}" method="get">
             <input type="text" id="search" name="search" class="form-control" placeholder="Procurar...">
         </form>
     </div>
 
     <div id="events-container" class="col-md-12">
-        @if ($search)
-        <h2>Resultados da busca por: {{$search}}</h2>
-        @else
-        <h2>Próximos Eventos</h2>
-        @endif
-        <p class="subtitle">Veja os eventos dos próximos dias</p>
+        <h2>Buscando por: {{$search}}</h2>
+        <p class="subtitle">Veja os eventos encontrados</p>
         <div id="cards-container">
             @forelse ($events as $event)
                 <div class="card col-md-3">
@@ -29,11 +25,7 @@
                     </div>
                 </div>
             @empty
-                @if ($search)
-                <p>Não foi possível encontrar nenhum evento com <strong>{{$search}}</strong></p>
-                @else
                 <p>Não há eventos próximos no momento</p>
-                @endif
             @endforelse
         </div>
     </div>
