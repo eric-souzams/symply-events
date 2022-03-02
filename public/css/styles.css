@@ -190,7 +190,7 @@ body {
     font-weight: bold;
 }
 
-#info-container i.event-icon {
+.event-icon {
     width: 1.3rem;
     height: 1.3rem;
     color: #F2A340;
@@ -199,6 +199,15 @@ body {
 
 #info-container #event-submit {
     margin: 20px 0;
+}
+
+#items-list {
+    list-style: none;
+    padding-left: 0;
+}
+
+#items-list li {
+    display: flex;
 }
 
 /* Footer */

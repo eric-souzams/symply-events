@@ -26,7 +26,7 @@ class EventController extends Controller
             'city' => 'required|string|min:1|max:100',
             'private' => 'required|boolean',
             'description' => 'required|string|min:1',
-            'image' => 'required|file',
+            'image' => 'required|file'
         ]);
 
         if ($request->hasFile('image') && $request->file('image')->isValid()) {
@@ -42,7 +42,8 @@ class EventController extends Controller
             'city' => $request->city,
             'private' => $request->private,
             'description' => $request->description,
-            'image' => $imageName
+            'image' => $imageName,
+            'items' => $request->items
         ]);
 
         return redirect()->route('events.index')->with('msg', 'Evento criado com sucesso.');

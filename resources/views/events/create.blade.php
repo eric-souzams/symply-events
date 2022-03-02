@@ -35,6 +35,25 @@
                 <textarea name="description" id="description" class="form-control" placeholder="Event description"></textarea>
                 {{ $errors->has('description') ? $errors->first('description') : '' }}
             </div>
+            <div class="form-group">
+                <label for="items">Add infrastructure items:</label>
+                <div class="form-group">
+                    <input type="checkbox" name="items[]" value="Chairs"> Chairs
+                </div>
+                <div class="form-group">
+                    <input type="checkbox" name="items[]" value="Stage"> Stage
+                </div>
+                <div class="form-group">
+                    <input type="checkbox" name="items[]" value="Free Beer"> Free Beer
+                </div>
+                <div class="form-group">
+                    <input type="checkbox" name="items[]" value="Open Food"> Open Food
+                </div>
+                <div class="form-group">
+                    <input type="checkbox" name="items[]" value="Prizes"> Prizes
+                </div>
+                {{ $errors->has('items') ? $errors->first('items') : '' }}
+            </div>
 
             <button type="submit" class="btn btn-primary w-100">Create Event</button>
         </form>
