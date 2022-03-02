@@ -1,0 +1,1 @@
+<p>{{config('app.name')}} &copy; 2022</p>
