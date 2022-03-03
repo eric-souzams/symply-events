@@ -22,3 +22,7 @@ Route::prefix('/events')->group(function() {
     Route::post('/', [EventController::class, 'store'])->name('events.store');
     Route::get('/{eventId}', [EventController::class, 'show'])->name('events.show');
 });
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
+    return view('dashboard');
+})->name('dashboard');
