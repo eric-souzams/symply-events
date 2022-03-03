@@ -28,10 +28,9 @@ Route::prefix('/events')->group(function() {
 
     Route::get('/{eventId}/edit', [EventController::class, 'edit'])->name('events.edit')->middleware(['auth']);
     Route::put('/update/{eventId}', [EventController::class, 'update'])->name('events.update')->middleware(['auth']);
+
+    Route::post('/join/{eventId}', [EventController::class, 'join'])->name('events.join')->middleware(['auth']);
+    Route::delete('/leave/{eventId}', [EventController::class, 'leave'])->name('events.leave')->middleware(['auth']);
 });
 
 Route::get('/dashboard', [EventController::class, 'dashboard'])->middleware(['auth'])->name('dashboard');
-
-// Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-//     return view('dashboard');
-// })->name('dashboard');

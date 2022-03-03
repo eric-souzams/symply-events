@@ -24,7 +24,7 @@
                     <div class="card-body">
                         <p class="card-date">{{ date('d/m/Y', strtotime($event->date)) }}</p>
                         <h5 class="card-title">{{$event->title}}</h5>
-                        <p class="card-participants">5 confirmed participants</p>
+                        <p class="card-participants">{{$event->users->count()}} confirmed participants</p>
                         <a href="{{ route('events.show', ['eventId' => $event->id]) }}" class="btn btn-primary">View more</a>
                     </div>
                 </div>
