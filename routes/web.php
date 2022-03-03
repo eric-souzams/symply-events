@@ -18,11 +18,20 @@ Route::redirect('/', '/events');
 
 Route::prefix('/events')->group(function() {
     Route::get('/', [EventController::class, 'index'])->name('events.index');
-    Route::get('/create', [EventController::class, 'create'])->name('events.create');
+
+    Route::get('/create', [EventController::class, 'create'])->name('events.create')->middleware(['auth']);
     Route::post('/', [EventController::class, 'store'])->name('events.store');
+
     Route::get('/{eventId}', [EventController::class, 'show'])->name('events.show');
+
+    Route::delete('/{eventId}', [EventController::class, 'destroy'])->name('events.destroy')->middleware(['auth']);
+
+    Route::get('/{eventId}/edit', [EventController::class, 'edit'])->name('events.edit')->middleware(['auth']);
+    Route::put('/update/{eventId}', [EventController::class, 'update'])->name('events.update')->middleware(['auth']);
 });
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return view('dashboard');
-})->name('dashboard');
+Route::get('/dashboard', [EventController::class, 'dashboard'])->middleware(['auth'])->name('dashboard');
+
+// Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
+//     return view('dashboard');
+// })->name('dashboard');

@@ -4,7 +4,7 @@
 
 @section('content')
     <div id="search-container" class="col-md-12" style="background-color: #233240;">
-        <h1>Busque por um evento</h1>
+        <h1>Search event</h1>
         <form action="{{ route('events.index') }}" method="get">
             <input type="text" id="search" name="search" class="form-control" placeholder="Procurar...">
         </form>
@@ -12,11 +12,11 @@
 
     <div id="events-container" class="col-md-12">
         @if ($search)
-        <h2>Resultados da busca por: {{$search}}</h2>
+        <h2>Search results for: {{$search}}</h2>
         @else
-        <h2>Próximos Eventos</h2>
+        <h2>Next Events</h2>
         @endif
-        <p class="subtitle">Veja os eventos dos próximos dias</p>
+        <p class="subtitle">See the events of the next days</p>
         <div id="cards-container">
             @forelse ($events as $event)
                 <div class="card col-md-3">
@@ -25,14 +25,14 @@
                         <p class="card-date">{{ date('d/m/Y', strtotime($event->date)) }}</p>
                         <h5 class="card-title">{{$event->title}}</h5>
                         <p class="card-participants">5 confirmed participants</p>
-                        <a href="{{ route('events.show', ['eventId' => $event->id]) }}" class="btn btn-primary">Continue reading</a>
+                        <a href="{{ route('events.show', ['eventId' => $event->id]) }}" class="btn btn-primary">View more</a>
                     </div>
                 </div>
             @empty
                 @if ($search)
-                <p>Não foi possível encontrar nenhum evento com <strong>{{$search}}</strong></p>
+                <p>Could not find any event with <strong>{{$search}}</strong></p>
                 @else
-                <p>Não há eventos próximos no momento</p>
+                <p>There are no upcoming events at the moment</p>
                 @endif
             @endforelse
         </div>

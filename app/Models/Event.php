@@ -18,7 +18,8 @@ class Event extends Model
         'city',
         'private',
         'image',
-        'items'
+        'items',
+        'user_id'
     ];
 
     protected $casts = [
@@ -28,4 +29,9 @@ class Event extends Model
     protected $dates = [
         'date'
     ];
+
+    public function user()
+    {
+        return $this->belongsTo('App\Models\User');
+    }
 }

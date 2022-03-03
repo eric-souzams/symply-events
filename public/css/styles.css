@@ -228,3 +228,16 @@ footer {
 footer p {
     margin-bottom: 0;
 }
+
+
+/* Dashboard */
+.dashboard-title-container {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+/* Edit page */
+.img-preview {
+    width: 100px;
+    margin-top: 20px;
+}
